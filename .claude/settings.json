@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_figma_figma__get_screenshot",
+      "Bash(cd /Users/sadika.r/Desktop/educateu && grep -rn \"EnrollButton\" --include=\"*.tsx\" . | grep -v node_modules)",
+      "Read(//Users/sadika.r/Desktop/educateu/**)",
+      "Bash(cd /Users/sadika.r/Desktop/educateu && cat scripts/list-stripe-prices.ts)",
+      "Read(//Users/sadika.r/Desktop/educateu/src/app/api/create-checkout-session/**)"
+    ]
+  }
+}

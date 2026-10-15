@@ -1,0 +1,569 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --on-dark: #ffffff;
+
+  /* Primary (Figma: Primary/*) */
+  --primary-50: #f1fefa;
+  --primary-500: #1ee9b5;
+  --primary-700: #128c6d;
+  --primary-800: #0c5d48;
+  --primary-900: #062f24;
+  --primary-950: #042018;
+
+  /* Accent (Figma: Accent/*) */
+  --accent-50: #ecfdf9;
+  --accent-500: #1ee9b5;
+  --accent-600: #18ba91;
+  --accent-700: #128c6d;
+
+  /* Surface (Figma: Surface/*) */
+  --surface-dark: #06180b;
+  --surface-dark-2: #08210f;
+  --surface-light: #ffffff;
+  --surface-white: #ffffff;
+  --surface-card-light: #ffffff;
+
+  /* Semantic (Figma: Semantic/*) */
+  --warning: #f5a623;
+  --success: #1ee9b5;
+
+  /* Neutral (Figma: Neutral/*) */
+  --neutral-50: #f7f8f7;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-on-dark: var(--on-dark);
+
+  --color-primary: var(--primary-500);
+  --color-primary-50: var(--primary-50);
+  --color-primary-500: var(--primary-500);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-2: var(--surface-dark-2);
+  --color-surface-light: var(--surface-light);
+  --color-surface-white: var(--surface-white);
+  --color-surface-card-light: var(--surface-card-light);
+
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+
+  --color-neutral-50: var(--neutral-50);
+
+  --font-sans: var(--font-stack-sans-text);
+  --font-title: var(--font-stack-sans-notch);
+
+  /* The site's one content width (Figma's 1312 column in a 1440 frame):
+     `max-w-site` on a container inside a section that already has the
+     gutter, `site-container` on anything that carries its own gutter. */
+  --container-site: 82rem; /* 1312px */
+
+  --breakpoint-sm: 540px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1536px;
+  --breakpoint-4xl: 1920px;
+  --font-heading: var(--font-sans);
+
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+  /* Negative delay starts playback half a cycle in (the "center" of the
+     loop, translateX(-12.5%)) instead of at the from-state edge
+     (translateX(-25%)) — so a fast scroll never lands on the strip right
+     as it's sitting at that edge position. */
+  --animate-marquee: marquee 25s linear -12.5s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Running content (the type scale's body and lead roles: paragraphs, list
+     items, answers) is justified; headings, titles, buttons, labels and meta
+     text stay left-aligned, where justify only opens gaps in short lines.
+     From 768px only: a phone line holds too few words to justify without
+     gaps. Hyphenation keeps the word gaps even (needs lang="en"). Being
+     in the base layer, any text-left / text-center utility overrides it, which
+     is how a block too narrow to justify cleanly (a card, a sidebar) opts out;
+     text inside a centred block is left centred. */
+  @media (min-width: 768px) {
+    :where(.type-body, .type-lead):not(
+        :is(.text-center, .sm\:text-center, .md\:text-center, .lg\:text-center) *
+      ) {
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* The page container: the site width plus the site gutter (20px, 40px from
+   768px), centred. Every section's content edge lines up with the navbar's,
+   whatever the screen width (see Bounded). */
+@utility site-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem; /* 20px */
+  max-width: calc(82rem + 2.5rem); /* 1312px + gutters; matches --container-site */
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem; /* 40px */
+    max-width: calc(82rem + 5rem);
+  }
+}
+
+/* Opts a block out of justified text: its body and lead paragraphs stay
+   left-aligned. For sections whose paragraphs sit in narrow cards, columns or
+   answer panels, where too few words fit a line to justify cleanly (any width). */
+@utility ragged {
+  &:is(.type-body, .type-lead),
+  & :is(.type-body, .type-lead) {
+    text-align: start;
+    hyphens: manual;
+  }
+}
+
+/* Type scale — the single source of truth for text size on every page.
+   Each role sets font-size + line-height at every breakpoint, so the same
+   role reads identically on every page and at every screen width. Weight,
+   colour, tracking and font family stay owned by each component.
+   Elements using one of these must not also carry text-[size] / leading-*
+   classes. Breakpoints match `--breakpoint-*` above (sm = 540px).
+
+   role          base  sm   md   lg   xl   2xl  4xl
+   type-display   44   52   64   80   96   104  120   marketing page hero h1
+   type-h1        36   40   48   56   64    -    -    interior / app page h1
+   type-h2        36   40   48   56   64   72    -    section title
+   type-h3        26    -   28    -   32    -    -    sub-section / feature block
+   type-h4        20    -   22   24    -    -    -    card / panel title
+   type-stat      56    -   64    -   80    -    -    big figures (92%, £19)
+   type-lead      16    -   18    -    -   20    -    section subtitle / intro
+   type-body      15    -   16    -    -    -    -    paragraphs, list items
+   type-small     14    -    -    -    -    -    -    meta, card descriptions
+   type-caption   12    -   13    -    -    -    -    eyebrows, labels, badges
+   type-button    16    -    -    -    -    -    -    every CTA / button label */
+@utility type-display {
+  font-size: 2.75rem; /* 44px */
+  line-height: 1;
+  @media (min-width: 540px) { font-size: 3.25rem; } /* 52px */
+  @media (min-width: 768px) { font-size: 4rem; } /* 64px */
+  @media (min-width: 1024px) { font-size: 5rem; } /* 80px */
+  @media (min-width: 1280px) { font-size: 6rem; } /* 96px */
+  @media (min-width: 1440px) { font-size: 6.5rem; } /* 104px */
+  @media (min-width: 1920px) { font-size: 7.5rem; } /* 120px */
+}
+
+@utility type-h1 {
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.1;
+  @media (min-width: 540px) { font-size: 2.5rem; } /* 40px */
+  @media (min-width: 768px) { font-size: 3rem; } /* 48px */
+  @media (min-width: 1024px) { font-size: 3.5rem; } /* 56px */
+  @media (min-width: 1280px) { font-size: 4rem; } /* 64px */
+}
+
+@utility type-h2 {
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.05;
+  @media (min-width: 540px) { font-size: 2.5rem; } /* 40px */
+  @media (min-width: 768px) { font-size: 3rem; } /* 48px */
+  @media (min-width: 1024px) { font-size: 3.5rem; } /* 56px */
+  @media (min-width: 1280px) { font-size: 4rem; } /* 64px */
+  @media (min-width: 1440px) { font-size: 4.5rem; } /* 72px */
+}
+
+@utility type-h3 {
+  font-size: 1.625rem; /* 26px */
+  line-height: 1.2;
+  @media (min-width: 768px) { font-size: 1.75rem; } /* 28px */
+  @media (min-width: 1280px) { font-size: 2rem; } /* 32px */
+}
+
+@utility type-h4 {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.3;
+  @media (min-width: 768px) { font-size: 1.375rem; } /* 22px */
+  @media (min-width: 1024px) { font-size: 1.5rem; } /* 24px */
+}
+
+@utility type-stat {
+  font-size: 3.5rem; /* 56px */
+  line-height: 1;
+  @media (min-width: 768px) { font-size: 4rem; } /* 64px */
+  @media (min-width: 1280px) { font-size: 5rem; } /* 80px */
+}
+
+@utility type-lead {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  @media (min-width: 768px) { font-size: 1.125rem; } /* 18px */
+  @media (min-width: 1440px) { font-size: 1.25rem; } /* 20px */
+}
+
+@utility type-body {
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
+  @media (min-width: 768px) { font-size: 1rem; } /* 16px */
+}
+
+@utility type-small {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+@utility type-button {
+  font-size: 1rem; /* 16px */
+  line-height: 1.25;
+}
+
+@utility type-caption {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.4;
+  @media (min-width: 768px) { font-size: 0.8125rem; } /* 13px */
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marquee {
+  /* -100/k% for k duplicated tracks (currently 4, see TrustedBy.tsx) — each
+     track is a self-contained period via its own trailing gap padding, so
+     shifting by exactly one k-th of the total width always moves by
+     exactly one period, keeping the loop seamless regardless of k. */
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+/* Recolors the native search-input clear ("x") button to match the brand
+   mint (primary-500) instead of the browser's default gray/blue — used by
+   the Hero and course-listing search inputs. Firefox/Safari don't expose
+   an equivalent styleable pseudo-element, so they keep their native glyph. */
+@utility search-cancel-mint {
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    cursor: pointer;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231ee9b5' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E")
+      no-repeat center / contain;
+  }
+}
+
+/* 75px glass blur is a huge Gaussian kernel; 24px still reads as frosted
+   glass and is far cheaper on integrated GPUs. */
+.backdrop-blur-\[75px\] {
+  --tw-backdrop-blur: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+.motion-paused .animate-first,
+.motion-paused .animate-second,
+.motion-paused .animate-third,
+.motion-paused .animate-fourth,
+.motion-paused .animate-fifth {
+  animation-play-state: paused !important;
+}
+
+html[data-motion="lite"] .gradients-container > *,
+html[data-motion="off"] .gradients-container > * {
+  animation: none !important;
+}
+
+/* Freeze the blob loops for as long as the page is actually moving (the
+   `data-scrolling` flag comes from MotionBudget.tsx, which explains why).
+   Scoped to `.gradients-container` on purpose: the marquee and float loops
+   are content the reader is looking at, and stopping those mid-scroll would
+   be noticed — these blobs are a slow background wash that nobody can track
+   while the page is in motion. */
+html[data-scrolling] .gradients-container > * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-first,
+  .animate-second,
+  .animate-third,
+  .animate-fourth,
+  .animate-fifth,
+  .animate-marquee,
+  .animate-float {
+    animation: none !important;
+  }
+
+  .backdrop-blur-\[75px\],
+  .backdrop-blur-\[40px\],
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Printing a checked certificate (/certificate-checker): the browser's print
+   dialog doubles as "save as PDF", so the sheet should carry the certificate
+   and nothing else — not the navbar, the lookup form or the footer. The
+   visibility switch keeps the certificate's own ancestors laid out (so it
+   still measures correctly) while hiding everything they draw. */
+@media print {
+  /* The app's body is `bg-surface-dark` for the footer's bleed; with "print
+     background graphics" turned on that would put a full dark page behind the
+     certificate. */
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  [data-certificate],
+  [data-certificate] * {
+    visibility: visible;
+  }
+
+  [data-certificate] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    /* The header band is part of the document, not decoration. */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}
+
+/* Glass surfaces for the new homepage. Frosted fill, a lit top edge and a hairline rim. */
+@utility glass {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.11), rgb(255 255 255 / 0.03) 60%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.2),
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 30px 60px -30px rgb(0 0 0 / 0.55);
+}
+@utility glass-ink {
+  background:
+    linear-gradient(145deg, rgb(12 50 30 / 0.72), rgb(6 24 11 / 0.82) 60%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+  backdrop-filter: blur(26px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    inset 0 0 0 1px rgb(255 255 255 / 0.07),
+    0 40px 80px -30px rgb(6 24 11 / 0.55);
+}
+@utility glass-light {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.4) 60%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.95),
+    inset 0 0 0 1px rgb(255 255 255 / 0.55),
+    0 30px 60px -30px rgb(6 24 11 / 0.22);
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6%, -8%, 0) scale(1.12); }
+}
+
+/* The hero course card's progress line, one run per course. */
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/*
+ * The site navbar's resting height (SiteNav.tsx). The homepage hero and the
+ * page spacer clear it with this; SiteNav copies it into --navbar-height,
+ * which other pages read (sticky sidebars, the old hero).
+ */
+:root {
+  --home-nav-h: 72px;
+}
+@media (min-width: 1024px) {
+  :root { --home-nav-h: 84px; }
+}
